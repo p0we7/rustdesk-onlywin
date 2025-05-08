@@ -202,7 +202,7 @@ fn main() {
         &mut ui,
     ) {
         if click_setup {
-            args = vec!["--install".to_owned()];
+            args = vec!["--silent-install".to_owned()];
         } else if quick_support {
             args = vec!["--quick_support".to_owned()];
         }
