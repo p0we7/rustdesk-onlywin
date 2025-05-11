@@ -119,16 +119,7 @@ const wchar_t* WindowClassRegistrar::GetWindowClass() {
     window_class.cbClsExtra = 0;
     window_class.cbWndExtra = 0;
     window_class.hInstance = GetModuleHandle(nullptr);
-    
-    // Try to load icon from data\flutter_assets\assets\icon.ico if it exists
-    HICON custom_icon = LoadCustomIcon();
-    if (custom_icon != nullptr) {
-      window_class.hIcon = custom_icon;
-    } else {
-      window_class.hIcon =
-          LoadIcon(window_class.hInstance, MAKEINTRESOURCE(IDI_APP_ICON));
-    }
-    
+    window_class.hIcon = NULL;
     window_class.hbrBackground = 0;
     window_class.lpszMenuName = nullptr;
     window_class.lpfnWndProc = Win32Window::WndProc;
