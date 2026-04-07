@@ -1,0 +1,23 @@
+name: Flutter OnlyWin Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - migrate-1.4.6
+    paths-ignore:
+      - "docs/**"
+      - "README.md"
+      - "res/**"
+      - "appimage/**"
+      - "flatpak/**"
+
+
+jobs:
+  run-flutter-nightly-build:
+    uses: ./.github/workflows/flutter-build.yml
+    secrets: inherit
+    with:
+      upload-artifact: true
+      upload-tag: "onlywin"
+      maunal-trigger: ${{ github.event_name == 'workflow_dispatch' }}
